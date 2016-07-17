@@ -695,14 +695,16 @@ dt {
 }
 
 #header {
+/*
   z-index: 100;
   left: 0;
   top: 0px;
   height: 60px;
   width: 100%;
   position: fixed;
-  background: url(../images/nav-bg.gif) #353535;
   border-bottom: 4px solid #434343;
+*/
+  background: url(../images/nav-bg.gif) #353535;
   -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   -o-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
@@ -728,12 +730,12 @@ dt {
 #header nav li a {
   color: white;
   border: 1px solid white;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #004c48), color-stop(100%, #00d6b9));
-  background: -webkit-linear-gradient(#004c48, #00d6b9);
-  background: -moz-linear-gradient(#004c48, #00d6b9);
-  background: -o-linear-gradient(#004c48, #00d6b9);
-  background: -ms-linear-gradient(#004c48, #00d6b9);
-  background: linear-gradient(#004c48, #00d6b9);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #021417), color-stop(100%, #0a97aa));
+  background: -webkit-linear-gradient(#021417, #0a97aa);
+  background: -moz-linear-gradient(#021417, #0a97aa);
+  background: -o-linear-gradient(#021417, #0a97aa);
+  background: -ms-linear-gradient(#021417, #0a97aa);
+  background: linear-gradient(#021417, #0a97aa);
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
