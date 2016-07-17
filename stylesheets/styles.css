@@ -846,3 +846,23 @@ section #title .credits.right {
     display: none;
   }
 }
+
+.api-tag {
+  margin-right: 30px;
+  color: #888;
+}
+
+
+.api-box {
+  margin-bottom: 30px;
+}
+
+.api-box p {
+  padding-left: 30px;
+  margin-bottom: 0px;
+}
+
+.api-box span {
+  padding-left: 30px;
+  margin-bottom:10px;
+}

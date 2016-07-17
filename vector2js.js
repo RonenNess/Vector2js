@@ -67,7 +67,7 @@
 
             // [API]
             // [chainable, clone]
-            // clone the vector and return the clone
+            // clone the vector and return the clone.
             // @return cloned vector.
             clone: function()
             {
@@ -168,6 +168,7 @@
             // [API]
             // [chainable, change_self]
             // make negative self (multiply by -1)
+            // @return self.
             invert_self: function()
             {
                 this.mul_scalar_self(-1);
