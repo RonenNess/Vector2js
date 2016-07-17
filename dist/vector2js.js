@@ -65,6 +65,7 @@
             // version
             version: "1.0.0",
 
+            // [API]
             // [chainable, clone]
             // clone the vector and return the clone
             // @return cloned vector.
@@ -73,6 +74,7 @@
                 return new Vector(this.x, this.y);
             },
 
+            // [API]
             // [chainable, change_self]
             // set values from another vector. this changes value of self.
             // @param vector - other vector to get values from.
@@ -84,6 +86,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // set x component from another vector.
             // @return self.
@@ -93,6 +96,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // set y component from another vector.
             // @return self.
@@ -102,6 +106,7 @@
                 return this;
             },
 
+            // [API]
             // []
             // convert to dict with {x, y}.
             // @return a dictionary.
@@ -110,6 +115,7 @@
                 return {x: this.x, y: this.y};
             },
 
+            // [API]
             // []
             // return a list with [x, y].
             // @return a list.
@@ -118,6 +124,7 @@
                 return [this.x, this.y];
             },
 
+            // [API]
             // [chainable, change_self]
             // set values from x, y.
             // @param x - optional x component to set.
@@ -130,6 +137,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, clone]
             // clone and flip between x and y.
             // @return copy vector with flipped x and y components.
@@ -138,6 +146,7 @@
                 return new Vector(this.y, this.x);
             },
 
+            // [API]
             // [chainable, change_self]
             // flip between x and y of self.
             // @return self.
@@ -147,6 +156,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, clone]
             // create an inverted copy of self (eg {x, y} => {-x, -y}).
             // @return cloned vector with inverted values.
@@ -155,6 +165,7 @@
                 return this.mul_scalar(-1);
             },
 
+            // [API]
             // [chainable, change_self]
             // make negative self (multiply by -1)
             invert_self: function()
@@ -163,6 +174,7 @@
                 return this;
             },
 
+            // [API]
             // []
             // get distance from another vector.
             // @param other - vector to get distance from.
@@ -172,6 +184,7 @@
                 return vectors_distance(this, other);
             },
 
+            // [API]
             // []
             // get angle from another vector.
             // @return angle in radians from this to other.
@@ -180,6 +193,7 @@
                 return vectors_angle(this, other, true);
             },
 
+            // [API]
             // []
             // get degrees from another vector.
             // @return angle in degrees from this to other.
@@ -188,6 +202,7 @@
                 return vectors_angle(this, other, true) * rad_to_deg;
             },
 
+            // [API]
             // []
             // convert this vector to radian angle.
             // @return angle in radians.
@@ -196,6 +211,7 @@
                 return vectors_angle(Vector.zero, this, true);
             },
 
+            // [API]
             // []
             // calculate the length of this vector
             // @return vector length.
@@ -204,6 +220,7 @@
                 return Math.sqrt(this.x*this.x + this.y*this.y);
             },
 
+            // [API]
             // []
             // convert this vector to degree.
             // @return angle in degrees (0-360).
@@ -212,6 +229,7 @@
                 return this.to_radian() * rad_to_deg;
             },
 
+            // [API]
             // [chainable, change_self]
             // normalize this vector and return it.
             // @return self.
@@ -224,6 +242,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, clone]
             // return normalized copy of this vector.
             // @return normalized vector.
@@ -232,6 +251,7 @@
                 return this.clone().normalize_self();
             },
 
+            // [API]
             // [chainable, change_self]
             // add other vector to self.
             // @return self.
@@ -242,6 +262,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // substract other vector from self.
             // @return self.
@@ -252,6 +273,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // divide self by other vector.
             // @return self.
@@ -262,6 +284,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // multiply self vector by other vector.
             // @return self.
@@ -272,6 +295,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // add scalar to self.
             // @return self.
@@ -282,6 +306,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // sub scalar from self.
             // @return self.
@@ -292,6 +317,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // divide self by scalar.
             // @return self.
@@ -302,6 +328,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, change_self]
             // multiply self by scalar.
             // @return self.
@@ -312,6 +339,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and add other vector to it.
             // @return cloned vector.
@@ -320,6 +348,7 @@
                 return this.clone().add_self(other);
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and substract other vector from it.
             // @return cloned vector.
@@ -328,6 +357,7 @@
                 return this.clone().sub_self(other);
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and multiply by other vector.
             // @return cloned vector.
@@ -336,6 +366,7 @@
                 return this.clone().mul_self(other);
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and divide by other vector.
             // @return cloned vector.
@@ -344,6 +375,7 @@
                 return this.clone().div_self(other);
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and add scalar to it.
             // @param scalar - value to add.
@@ -353,6 +385,7 @@
                 return this.clone().add_scalar_self(scalar);
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and substract scalar from it.
             // @param scalar - value to substract.
@@ -362,6 +395,7 @@
                 return this.clone().sub_scalar_self(scalar);
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and multiply by scalar.
             // @param scalar - value to multiply.
@@ -371,6 +405,7 @@
                 return this.clone().mul_scalar_self(scalar);
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and divide by scalar.
             // @param scalar - value to divide by.
@@ -380,6 +415,7 @@
                 return this.clone().div_scalar_self(scalar);
             },
 
+            // [API]
             // [chainable, change_self]
             // clamp vector values into range.
             // @param min - min value for x, y components.
@@ -394,6 +430,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, clone]
             // clone vector and clamp its values
             // @param min - min value for x, y components.
@@ -404,6 +441,7 @@
                 return this.clone().clamp_self(min, max);
             },
 
+            // [API]
             // [chainable, change_self]
             // apply a function on x and y components on self.
             // for example, you can use Math.round to round values.
@@ -416,6 +454,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, clone]
             // clone self and apply a function on x and y components on the clone.
             // for example, you can use Math.round to round values.
@@ -426,6 +465,7 @@
                 return this.clone().apply_self(func);
             },
 
+            // [API]
             // [chainable, change_self]
             // turn self to absolute values (eg turn x, y positive).
             // @return self.
@@ -434,6 +474,7 @@
                 return this.apply_self(Math.abs);
             },
 
+            // [API]
             // [chainable, clone]
             // clone and turn to absolute values (eg turn x, y positive).
             // @return cloned vector.
@@ -442,6 +483,7 @@
                 return this.clone().abs_self();
             },
 
+            // [API]
             // [chainable, change_self]
             // turn self to round values (eg turn x, y positive).
             // @return self.
@@ -450,6 +492,7 @@
                 return this.apply_self(Math.round);
             },
 
+            // [API]
             // [chainable, clone]
             // clone and turn to round values (eg turn x, y positive).
             // @return cloned vector.
@@ -458,6 +501,7 @@
                 return this.clone().round_self();
             },
 
+            // [API]
             // [chainable, change_self]
             // if any of the components of this vector are NaN, null, undefined, etc. set them to default.
             // note: 0's will not be replaced with default values.
@@ -472,6 +516,7 @@
                 return this;
             },
 
+            // [API]
             // [chainable, clone]
             // create a clone and if any of the components of this vector are NaN, null, undefined, etc. set them to default.
             // note: 0's will not be replaced with default values.
@@ -483,6 +528,7 @@
                 return this.clone().repair_self(x, y);
             },
 
+            // [API]
             // []
             // convert to string ("x,y").
             // @return string representation of the vector.
@@ -492,6 +538,7 @@
                 return this.x + "," + this.y;
             },
 
+            // [API]
             // []
             // convert to string with given format.
             // @param format - string in which %x will be replaced with x value and %y with y value.
