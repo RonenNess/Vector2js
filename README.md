@@ -8,6 +8,16 @@
 
 Full docs can be found [here](https://ronenness.github.io/Vector2js/).
 
+## Install
+
+You can install via npm:
+
+```
+npm install vector2js
+```
+
+Or simply download the js files from /dist/ in this repo.
+
 ## Usage
 
 If you are using [nodejs](https://nodejs.org/en/) or [browserify](http://browserify.org/), you can use Vector2js like this:
