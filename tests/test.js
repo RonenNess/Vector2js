@@ -386,7 +386,7 @@ QUnit.test( "round_abs_apply", function( assert ) {
 
 	// test apply
 	var vector = new Vector(1.23, 1.23);
-	assert_vector(assert, vector.apply(Math.trunc), 1, 1);
+	assert_vector(assert, vector.apply(Math.floor), 1, 1);
 });
 
 // test clamp functions
