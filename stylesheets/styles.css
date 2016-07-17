@@ -624,16 +624,18 @@ blockquote {
 
 code {
   font-family: "Lucida Sans", Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-  color: #efefef;
+  color: #ccefef;
   font-size: 13px;
-  margin: 0 4px;
+  margin: 10px 4px;
   padding: 4px 6px;
+  display: block;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   -o-border-radius: 2px;
   -ms-border-radius: 2px;
   -khtml-border-radius: 2px;
   border-radius: 2px;
+  background: rgba(200,255,255,0.1);
 }
 
 pre {

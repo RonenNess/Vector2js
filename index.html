@@ -25,6 +25,7 @@
 
     <div class="wrapper">
       <section style="margin-top:0px;">
+
         <div id="title">
           <img src="images/logo.png" />
           <h2 style="text-align:center">Simple 2D Vectors for JS.</h2>
@@ -43,41 +44,55 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
-        <h3>
-<a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is it</h3>
+        <h3><a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is it</h3>
 
-<p>Vector2js is an open-source project that provide simple 2D vectors for JavaScript applications. <br />
-It works on all major browsers + Node.js with 100% test coverage. </p> <img src="images/supported.png" width="250" />
+          <p>Vector2js is an open-source project that provide simple 2D vectors for JavaScript applications. <br />
+          It works on all major browsers + Node.js with 100% test coverage. </p> <img src="images/supported.png" width="250" />
 
         <br /><br />
 
-<h3>
-<a id="live-demo" class="anchor" href="#live-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Live Demo</h3>
+        <h3><a id="live-demo" class="anchor" href="#live-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Live Demo</h3>
+        <p>You can play with the box below to try out Vector2js!</p>
 
-<p>You can play with the box below to try out Vector2js!</p>
+        <h3><a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h3>
+        <p>You can install Vector2js from npm:
+        <code>npm install vector2js</code>
+        Or you can just <a href="https://github.com/RonenNess/Vector2js/zipball/master">download</a> the repo and include the main JavaScript file from /dist/.
+        </p>
 
-<h3>
-<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h3>
+        <h3><a id="usage-and-docs" class="anchor" href="#usage-and-docs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage & API</h3>
+        <p>
+          Vector2js exports one main object, Vector. To instanciate a new vector, simply use:
+          <code>
+            // if in nodejs or using browserify, you need to require the vector class first: <br />
+            var Vector = require("node2js");
+            <br /><br />
+            // create a new vector <br />
+            var vec = new Vector(1,1);
+          </code>
 
-        You can install Vector2js from npm:
+          Or, you can create a new vector from a given angle (its length will be 1 by default):
 
-        <quote>npm install vector2js</quote>
+          <code>
+            // create vector with length of 1 from radian: <br />
+            var vec = Vector.from_radian(0.785398);
+            <br /><br />
+            // create vector with length of 1 from degree: <br />
+            var vec = Vector.from_degree(45);
+          </code>
 
 
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+          Once you created a vector, you can use all the API below:
+        </p>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+        <!-- API PASTE HERE -->
 
-<p>You can <a href="https://help.github.com/articles/basic-writing-and-formatting-syntax/#mentioning-users-and-teams" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+        <!-- END API PASTE -->
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Vector2js? Feel free to report bugs at <a href="https://github.com/RonenNess/Vector2js/issues">github issues</a> or contact me at <a href="mailto:ronenness@gmail.com">ronenness@gmail.com</a>.</p>
+        <h3><a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+        <p>Having trouble with Vector2js? Feel free to report bugs at <a href="https://github.com/RonenNess/Vector2js/issues">github issues</a> or contact me at <a href="mailto:ronenness@gmail.com">ronenness@gmail.com</a>.</p>
       </section>
-
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
