@@ -1,0 +1,27 @@
+{
+  "name": "vector2js",
+  "version": "1.0.0",
+  "homepage": "https://ronenness.github.io/Vector2js/",
+  "authors": [
+    "Ronen Ness <ronenness@gmail.com>"
+  ],
+  "description": "Simple 2d vectors for JavaScript!",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "vector",
+    "vector2d",
+    "2d",
+    "game",
+    "math"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
