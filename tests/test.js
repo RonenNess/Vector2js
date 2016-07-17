@@ -1,3 +1,56 @@
+// for qunit in nodejs
+if (typeof require != 'undefined')
+{
+     if (typeof QUnit == 'undefined') {QUnit = require('qunit-cli');}
+	 if (typeof Vector == 'undefined') {Vector = require("./../dist/vector2js.js")}
+}	
+
+// return a dictionary with all method names and number of times they were called.
+function set_coverage(obj)
+{
+    // return dictionary
+    var ret = {};
+
+    // function to wrap a method for coverage
+    function wrap_method(obj, key)
+    {
+        // add to return dict
+        ret[key] = 0;
+
+        // copy the old function
+        obj["__coverage_" + key] = obj[key];
+
+        // create the wrapping function
+        obj[key] = function()
+        {
+            // add counter
+            ret[key]++;
+
+            // call original function
+            return obj["__coverage_" + key].apply(this, arguments);
+        }
+    }
+
+    // set all object methods
+    for (var key in obj)
+    {
+        if (typeof obj[key] === "function") {
+            wrap_method(obj, key);
+        }
+    }
+
+    // set all object prototype methods
+    for (var key in obj.prototype)
+    {
+        if (typeof obj.prototype[key] === "function") {
+            wrap_method(obj.prototype, key);
+        }
+    }
+
+    // return the results dictionary
+    return ret;
+}
+ 
 // add coverage to the Vector class
 var covered = set_coverage(Vector);
 
@@ -447,7 +500,17 @@ setTimeout(function()
 	}
 
 	if (not_covered.length === 0) not_covered = "None";
-	document.getElementById("covered-percent").innerHTML = Math.round((covered_count / total) * 100.0);
-	document.getElementById("not-covered").innerHTML = String(not_covered).replace(new RegExp(",", 'g'), ", ");
+	var covered_percent = Math.round((covered_count / total) * 100.0);
+	var not_covered_str = String(not_covered).replace(new RegExp(",", 'g'), ", ");
+	if (typeof document != 'undefined')
+	{
+		document.getElementById("covered-percent").innerHTML = covered_percent;
+		document.getElementById("not-covered").innerHTML = not_covered_str;
+	}
+	else
+	{
+		console.log("Covered percent: " + covered_percent + "%");
+		console.log("Not covered: " + not_covered_str);
+	}
 
 }, 600);
