@@ -1,6 +1,6 @@
 {
   "name": "vector2js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple 2D vectors for JavaScript.",
   "main": "dist/vector2js.js",
   "scripts": {
