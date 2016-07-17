@@ -6,9 +6,6 @@
     "Ronen Ness <ronenness@gmail.com>"
   ],
   "description": "Simple 2d vectors for JavaScript!",
-  "moduleType": [
-    "globals"
-  ],
   "keywords": [
     "vector",
     "vector2d",
@@ -23,5 +20,6 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "main": "dist/vector2js.min.js"
 }
