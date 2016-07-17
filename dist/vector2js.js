@@ -1,6 +1,9 @@
 /*
-* A simple Vector class for node.js / javascript.
-* Author: Ronen Ness, 2015
+* A simple 2d Vector class for node.js / javascript.
+* Exported and refactored from SSCD.js lib (https://github.com/RonenNess/SSCD.js).
+*
+* Author: Ronen Ness, 2016.
+* License: MIT.
 */
 
 var Vector = (function ()
@@ -55,6 +58,9 @@ var Vector = (function ()
 
     // vector prototype
     Vector.prototype = {
+
+        // version
+        version = "1.0.0",
 
         // [chainable, clone]
         // clone the vector and return the clone
