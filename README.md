@@ -45,10 +45,10 @@ To test in nodejs first install [qunit-cli](https://www.npmjs.com/package/qunit-
 npm install qunit-cli
 ```
 
-Then from the `/tests/` folder you can execute tests with the following command:
+Then you can run the following command from the project root:
 
 ```
-qunit-cli test.js
+qunit-cli tests/test.js
 ```
 
 ## License

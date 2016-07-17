@@ -4,22 +4,23 @@
   "description": "Simple 2D vectors for JavaScript.",
   "main": "dist/vector2js.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "qunit-cli tests/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RonenNess/SSCD.js.git"
+    "url": "git+https://github.com/RonenNess/Vector2js.git"
   },
   "keywords": [
-    "collision",
-    "detection",
+    "vector",
+    "vector2d",
     "2d",
+    "math",
     "physics"
   ],
   "author": "Ronen Ness",
-  "license": "Zlib",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RonenNess/SSCD.js/issues"
+    "url": "https://github.com/RonenNess/Vector2js/issues"
   },
-  "homepage": "https://github.com/RonenNess/SSCD.js#readme"
+  "homepage": "https://ronenness.github.io/Vector2js/"
 }
