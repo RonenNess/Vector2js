@@ -27,9 +27,9 @@ If you include the JavaScript from /dist/ directly into your web pages, you will
 var vec = new Vector(10, 10);
 ```
 
-### Test
+### Tests and Browser support
 
-Vector2js is fully testes on IE6 & above, Edge, Chrome, FireFox and Opera, and have coverage of 100%. To run the tests, you can simply clone the git and open '/tests/test.html' with your browser of choice.
+Vector2js is fully testes on Node.js, IE6 & above, Edge, Chrome, FireFox and Opera, and have coverage of 100%. To run the tests, you can simply clone the git and open '/tests/test.html' with your browser of choice.
 
 ![BrowsersSupport](./misc/supported.png)
 
