@@ -1,2 +1,2 @@
 # Vector2js
-Simple 2D Vectors for JS.
+A simple 2D Vectors for JS.
