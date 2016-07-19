@@ -16,6 +16,12 @@ You can install via npm:
 npm install vector2js
 ```
 
+Or bower:
+
+```
+bower install vector2js
+```
+
 Or simply download the js files from /dist/ in this repo.
 
 ## Usage

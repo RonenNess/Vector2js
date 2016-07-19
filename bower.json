@@ -1,17 +1,18 @@
 {
   "name": "vector2js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://ronenness.github.io/Vector2js/",
   "authors": [
     "Ronen Ness <ronenness@gmail.com>"
   ],
   "description": "Simple 2d vectors for JavaScript!",
   "keywords": [
-    "vector",
-    "vector2d",
+	"vectors",
+	"2d vectors",
     "2d",
-    "game",
-    "math"
+    "math",
+    "physics",
+	"game"
   ],
   "license": "MIT",
   "ignore": [
@@ -21,5 +22,5 @@
     "test",
     "tests"
   ],
-  "main": "dist/vector2js.min.js"
+  "main": "dist/vector2js.js"
 }

@@ -11,11 +11,12 @@
     "url": "git+https://github.com/RonenNess/Vector2js.git"
   },
   "keywords": [
-    "vector",
-    "vector2d",
+	"vectors",
+	"2d vectors",
     "2d",
     "math",
-    "physics"
+    "physics",
+	"game"
   ],
   "author": "Ronen Ness",
   "license": "MIT",
