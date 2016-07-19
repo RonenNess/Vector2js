@@ -75,7 +75,7 @@
         Vector.prototype = {
 
             // version
-            version: "1.0.0",
+            version: "1.0.2",
 
             // [API]
             // [chainable, clone]
