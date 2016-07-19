@@ -39,7 +39,7 @@ for line in infile:
                 break
 
             # add to api text
-            text += curr_line.title() + "<br />"
+            text += curr_line.capitalize() + "<br />"
 
         # now add all the comment text we just built
         curr += "<p>" + text + "</p>"
