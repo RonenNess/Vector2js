@@ -479,6 +479,25 @@ QUnit.test( "repair", function( assert ) {
 	assert_vector(assert, vector.repair(3, 3), 3, 3);
 });
 
+// test cross product and dot product
+QUnit.test( "dot_and_cross", function( assert ) {
+
+	// test dot product
+	var vector1 = new Vector(-1, 7);
+	var vector2 = new Vector(-5, 8);
+	assert.equal(vector1.dot(vector2), 61);
+	var vector1 = new Vector(3, 2);
+	var vector2 = new Vector(8, -1);
+	assert.equal(vector1.dot(vector2), 22);
+
+	// test cross product
+	var vector1 = new Vector(-1, 7);
+	var vector2 = new Vector(-5, 8);
+	assert.equal(vector1.cross(vector2), 27);
+	var vector1 = new Vector(3, 2);
+	var vector2 = new Vector(8, -1);
+	assert.equal(vector1.cross(vector2), -19);
+});
 
 // print coverage percent
 setTimeout(function()

@@ -208,7 +208,7 @@
             // [API]
             // []
             // convert this vector to a radian angle.
-            // this is equivalent to doing Vector.zero.radian_to(this);
+            // this is equivalent to doing Vector.zero.radian_to(this).
             // @return angle in radians.
             to_radian: function (other)
             {
@@ -218,11 +218,51 @@
             // [API]
             // []
             // convert this vector to degree.
-            // this is equivalent to doing Vector.zero.degree_to(this);
+            // this is equivalent to doing Vector.zero.degree_to(this).
             // @return angle in degrees (0-360).
             to_degree: function (other)
             {
                 return this.to_radian() * rad_to_deg;
+            },
+
+            // [API]
+            // [chainable, change_self]
+            // rotate this vector by a given degree.
+            // @param degree - degree to rotate this vector by (can be positive or negative).
+            // @return self.
+            rotate_degree_self: function(degree)
+            {
+                return this.copy(Vector.from_degree(this.to_degree() + degree));
+            },
+
+            // [API]
+            // [chainable]
+            // clone and rotate the vector by a given degree.
+            // @param degree - degree to rotate this vector by (can be positive or negative).
+            // @return cloned rotated vector.
+            rotate_degree: function(degree)
+            {
+                return Vector.from_degree(this.to_degree() + degree);
+            },
+
+            // [API]
+            // [chainable, change_self]
+            // rotate this vector by a given radian.
+            // @param radian - radian to rotate this vector by (can be positive or negative).
+            // @return self.
+            rotate_radian_self: function(radian)
+            {
+                return this.copy(Vector.from_radian(this.to_radian() + radian));
+            },
+
+            // [API]
+            // [chainable]
+            // clone and rotate the vector by a given degree.
+            // @param radian - radian to rotate this vector by (can be positive or negative).
+            // @return cloned rotated vector.
+            rotate_radian: function(radian)
+            {
+                return Vector.from_radian(this.to_radian() + radian);
             },
 
             // [API]
@@ -527,6 +567,26 @@
             round: function()
             {
                 return this.clone().round_self();
+            },
+
+            // [API]
+            // []
+            // calculate dot-product of this vector with another vector.
+            // @param other - other vector to calculate dot-product with.
+            // @return dot product.
+            dot: function (other)
+            {
+                return (this.x * other.x) + (this.y * other.y);
+            },
+
+            // [API]
+            // []
+            // calculate cross-product of this vector with another vector.
+            // @param other - other vector to calculate cross-product with.
+            // @return dot product.
+            cross: function (other)
+            {
+                return (this.x * other.y) - (this.y * other.x);
             },
 
             // [API]
