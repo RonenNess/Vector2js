@@ -499,6 +499,26 @@ QUnit.test( "dot_and_cross", function( assert ) {
 	assert.equal(vector1.cross(vector2), -19);
 });
 
+// vector rotation
+QUnit.test( "rotation", function( assert ) {
+
+	var to_rad = (Math.PI / 180);
+
+	// test rotate by degrees
+	var vector = new Vector(2, 0);
+	vector.rotate_degrees_self(90);
+	assert_vector(assert, vector, 0, 2);
+	assert_vector(assert, vector.rotate_degrees(90), -2, 0);
+	assert_vector(assert, vector.rotate_degrees(45), -1.41421356, 1.41421356);
+
+	// test rotate by radians
+	var vector = new Vector(2, 0);
+	vector.rotate_radians_self(90*to_rad);
+	assert_vector(assert, vector, 0, 2);
+	assert_vector(assert, vector.rotate_radians(90*to_rad), -2, 0);
+	assert_vector(assert, vector.rotate_radians(45*to_rad), -1.41421356, 1.41421356);
+});
+
 // print coverage percent
 setTimeout(function()
 {

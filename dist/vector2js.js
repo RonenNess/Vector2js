@@ -16,8 +16,18 @@
         // pi * 2
         var PI2 = Math.PI * 2;
 
-        // convert radian to degree
+        // convert radians to degrees
         var rad_to_deg = (180 / Math.PI);
+
+        // convert degrees to radians
+        var deg_to_rad = (Math.PI / 180);
+
+        // round numbers from 10'th digit
+        // this is useful for calculations that should return round or almost round numbers, but have a long tail of 0's and 1 due to floating points stuff
+        function smart_round(num)
+        {
+            return Math.round(num * 100000000.0) / 100000000.0;
+        }
 
         // return distance between vectors
         function vectors_distance(p1, p2) {
@@ -228,41 +238,47 @@
             // [API]
             // [chainable, change_self]
             // rotate this vector by a given degree.
-            // @param degree - degree to rotate this vector by (can be positive or negative).
+            // @param degrees - degrees to rotate this vector by (can be positive or negative).
             // @return self.
-            rotate_degree_self: function(degree)
+            rotate_degrees_self: function(degrees)
             {
-                return this.copy(Vector.from_degree(this.to_degree() + degree));
+                return this.rotate_radians_self(degrees * deg_to_rad);
             },
 
             // [API]
             // [chainable]
             // clone and rotate the vector by a given degree.
-            // @param degree - degree to rotate this vector by (can be positive or negative).
+            // @param degrees - degree to rotate this vector by (can be positive or negative).
             // @return cloned rotated vector.
-            rotate_degree: function(degree)
+            rotate_degrees: function(degrees)
             {
-                return Vector.from_degree(this.to_degree() + degree);
+                return this.clone().rotate_degrees_self(degrees);
             },
 
             // [API]
             // [chainable, change_self]
             // rotate this vector by a given radian.
-            // @param radian - radian to rotate this vector by (can be positive or negative).
+            // @param radians - radians to rotate this vector by (can be positive or negative).
             // @return self.
-            rotate_radian_self: function(radian)
+            rotate_radians_self: function(radians)
             {
-                return this.copy(Vector.from_radian(this.to_radian() + radian));
+                var ca = Math.cos(radians);
+                var sa = Math.sin(radians);
+                var x = (this.x * ca) - (this.y * sa);
+                var y = (this.x * sa) + (this.y * ca);
+                this.x = smart_round(x);
+                this.y = smart_round(y);
+                return this;
             },
 
             // [API]
             // [chainable]
             // clone and rotate the vector by a given degree.
-            // @param radian - radian to rotate this vector by (can be positive or negative).
+            // @param radians - radians to rotate this vector by (can be positive or negative).
             // @return cloned rotated vector.
-            rotate_radian: function(radian)
+            rotate_radians: function(radians)
             {
-                return Vector.from_radian(this.to_radian() + radian);
+                return this.clone().rotate_radians_self(radians);
             },
 
             // [API]
