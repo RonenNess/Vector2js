@@ -6,7 +6,7 @@
 * License: MIT.
 */
 
-!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.Victor=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.Vector=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 
 
     var Vector = (function ()
@@ -16,8 +16,18 @@
         // pi * 2
         var PI2 = Math.PI * 2;
 
-        // convert radian to degree
+        // convert radians to degrees
         var rad_to_deg = (180 / Math.PI);
+
+        // convert degrees to radians
+        var deg_to_rad = (Math.PI / 180);
+
+        // round numbers from 10'th digit
+        // this is useful for calculations that should return round or almost round numbers, but have a long tail of 0's and 1 due to floating points stuff
+        function smart_round(num)
+        {
+            return Math.round(num * 100000000.0) / 100000000.0;
+        }
 
         // return distance between vectors
         function vectors_distance(p1, p2) {
@@ -65,7 +75,7 @@
         Vector.prototype = {
 
             // version
-            version: "1.0.0",
+            version: "1.0.2",
 
             // [API]
             // [chainable, clone]
@@ -208,7 +218,7 @@
             // [API]
             // []
             // convert this vector to a radian angle.
-            // this is equivalent to doing Vector.zero.radian_to(this);
+            // this is equivalent to doing Vector.zero.radian_to(this).
             // @return angle in radians.
             to_radian: function (other)
             {
@@ -218,11 +228,57 @@
             // [API]
             // []
             // convert this vector to degree.
-            // this is equivalent to doing Vector.zero.degree_to(this);
+            // this is equivalent to doing Vector.zero.degree_to(this).
             // @return angle in degrees (0-360).
             to_degree: function (other)
             {
                 return this.to_radian() * rad_to_deg;
+            },
+
+            // [API]
+            // [chainable, change_self]
+            // rotate this vector by a given degree.
+            // @param degrees - degrees to rotate this vector by (can be positive or negative).
+            // @return self.
+            rotate_degrees_self: function(degrees)
+            {
+                return this.rotate_radians_self(degrees * deg_to_rad);
+            },
+
+            // [API]
+            // [chainable]
+            // clone and rotate the vector by a given degree.
+            // @param degrees - degree to rotate this vector by (can be positive or negative).
+            // @return cloned rotated vector.
+            rotate_degrees: function(degrees)
+            {
+                return this.clone().rotate_degrees_self(degrees);
+            },
+
+            // [API]
+            // [chainable, change_self]
+            // rotate this vector by a given radian.
+            // @param radians - radians to rotate this vector by (can be positive or negative).
+            // @return self.
+            rotate_radians_self: function(radians)
+            {
+                var ca = Math.cos(radians);
+                var sa = Math.sin(radians);
+                var x = (this.x * ca) - (this.y * sa);
+                var y = (this.x * sa) + (this.y * ca);
+                this.x = smart_round(x);
+                this.y = smart_round(y);
+                return this;
+            },
+
+            // [API]
+            // [chainable]
+            // clone and rotate the vector by a given degree.
+            // @param radians - radians to rotate this vector by (can be positive or negative).
+            // @return cloned rotated vector.
+            rotate_radians: function(radians)
+            {
+                return this.clone().rotate_radians_self(radians);
             },
 
             // [API]
@@ -527,6 +583,26 @@
             round: function()
             {
                 return this.clone().round_self();
+            },
+
+            // [API]
+            // []
+            // calculate dot-product of this vector with another vector.
+            // @param other - other vector to calculate dot-product with.
+            // @return dot product.
+            dot: function (other)
+            {
+                return (this.x * other.x) + (this.y * other.y);
+            },
+
+            // [API]
+            // []
+            // calculate cross-product of this vector with another vector.
+            // @param other - other vector to calculate cross-product with.
+            // @return dot product.
+            cross: function (other)
+            {
+                return (this.x * other.y) - (this.y * other.x);
             },
 
             // [API]
