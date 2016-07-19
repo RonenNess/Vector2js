@@ -866,3 +866,38 @@ section #title .credits.right {
   padding-left: 30px;
   margin-bottom:10px;
 }
+
+.vectors_data
+{
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.vectors_data p
+{
+  margin: 0;
+  padding: 0;
+  font-size: 90%;
+}
+
+.vectors_data span
+{
+  color: #00f1ff;
+}
+
+.code-box
+{
+  font: normal 10pt Consolas, Monaco, monospace;
+  color: #00f1ff;
+  background: #1c1c1c;
+  padding-left:10px;
+  padding-top:10px;
+}
+
+input
+{
+  font: normal 10pt Consolas, Monaco, monospace;
+  color: #00f1ff;
+  background: #313636;
+  font-size:110%;
+}
