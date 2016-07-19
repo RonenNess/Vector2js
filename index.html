@@ -25,6 +25,17 @@
   </head>
   <body>
 
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-43062336-6', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
     <div class="wrapper">
       <section style="margin-top:0px;">
 
@@ -34,9 +45,9 @@
           <br />
           <div id="header">
             <nav>
-              <li class="fork"><a href="https://github.com/RonenNess/Vector2js">View On GitHub</a></li>
-              <li class="downloads"><a href="https://github.com/RonenNess/Vector2js/zipball/master">.ZIP</a></li>
-              <li class="downloads"><a href="https://github.com/RonenNess/Vector2js/tarball/master">.TAR</a></li>
+              <li class="fork"><a       onclick="ga('send', 'event', 'action-in-site', 'clicked_on_fork');" href="https://github.com/RonenNess/Vector2js">View On GitHub</a></li>
+              <li class="downloads"><a  onclick="ga('send', 'event', 'action-in-site', 'downloaded');" href="https://github.com/RonenNess/Vector2js/zipball/master">.ZIP</a></li>
+              <li class="downloads"><a  onclick="ga('send', 'event', 'action-in-site', 'downloaded');" href="https://github.com/RonenNess/Vector2js/tarball/master">.TAR</a></li>
             </nav>
           </div><!-- end header -->
 
@@ -156,6 +167,7 @@ alert("result: " + vector1.add(vector2).toString());
             <script>
               function execute_code()
               {
+                  ga('send', 'event', 'action-in-site', 'run_code');
                   var code = "(function() { " + $("#try-code").val() + "})();";
                   eval(code);
               }
@@ -240,6 +252,6 @@ alert("result: " + vector1.add(vector2).toString());
       </section>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+
   </body>
 </html>
