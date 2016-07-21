@@ -901,3 +901,9 @@ input
   background: #313636;
   font-size:110%;
 }
+
+@media only screen and (max-width: 700px) {
+    .hidden-sm {
+        display: none;
+    }
+}
