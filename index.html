@@ -64,7 +64,11 @@
 
         <br /><br />
 
-        <!-- Vectors calvulator / live demo -->
+        <!-- Vectors calculator / live demo -->
+		<div class="show-sm">
+          <h2>Live Demo</h2>
+		  <p>To see a live demo with Vectors calculator, please surf with a wider-screen device.</p>
+		</div>
         <div class="hidden-sm">
           <h2><a id="live-demo" class="anchor" href="#live-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Live Demo - Vectors Calculator</h2>
           <p>Use the Vectors calculator below to try out Vector2js!</p>
@@ -203,8 +207,8 @@ alert("result: " + vector1.add(vector2).toString());
         <p>
           Vector2js exports one main object, Vector. To instanciate a new vector, simply use:
           <code>
-            // if in nodejs or using browserify, you need to require the vector class first: <br />
-            var Vector = require("node2js");
+            // on nodejs / browserify, require the vector class first: <br />
+            var Vector = require("vector2js");
             <br /><br />
             // create a new vector <br />
             var vec = new Vector(1,1);
