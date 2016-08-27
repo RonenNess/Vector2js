@@ -71,6 +71,15 @@
             return Vector.from_radian(rad);
         };
 
+        // create a vector from string ("x,y").
+        // @param str - string to create vector from.
+        // @return new vector instance.
+        Vector.from_string = function (str)
+        {
+            var parts = str.split(",");
+            return new Vector(parseFloat(parts[0]), parseFloat(parts[1]));
+        };
+		
         // vector prototype
         Vector.prototype = {
 

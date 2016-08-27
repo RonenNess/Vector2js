@@ -86,6 +86,10 @@ QUnit.test( "basic creation", function( assert ) {
 	// create from radian
 	var vector = Vector.from_radian(45*(Math.PI/180)).mul_scalar_self(1000).round_self();
 	assert_vector(assert, vector, 707, 707);
+	
+	// create from string
+	var vector = Vector.from_string("42.3,10");
+	assert_vector(assert, vector, 42.3, 10);
   
 });
 
