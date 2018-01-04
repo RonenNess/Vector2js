@@ -45,11 +45,13 @@ var vec = new Vector(10, 10);
 
 ### Basic usage example:
 
+Here's a basic usage example - adding two vectors and print the result length:
+
 ```javascript
-	var v1 = new Vector(5, 10);
-	var v2 = new Vector(1, 1);
-	console.log(v1.add(v2).length())
-	> 12.529964086141668
+var v1 = new Vector(5, 10);
+var v2 = new Vector(1, 1);
+console.log(v1.add(v2).length())
+> 12.529964086141668
 ```
 
 ## Tests & Browser support
