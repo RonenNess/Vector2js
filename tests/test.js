@@ -1,5 +1,5 @@
 // for qunit in nodejs
-if (typeof require != 'undefined')
+if (typeof require !== 'undefined')
 {
      if (typeof QUnit == 'undefined') {QUnit = require('qunit-cli');}
 	 if (typeof Vector == 'undefined') {Vector = require("./../dist/vector2js.js")}
@@ -57,7 +57,7 @@ var covered = set_coverage(Vector);
 // validate vector values
 function assert_vector(a, v, x, y)
 {
-	a.deepEqual(v.to_list(), [x, y]);
+	a.deepEqual(v.toArray(), [x, y]);
 }
 
 // testing creating vectors with different params and ways
@@ -80,15 +80,19 @@ QUnit.test( "basic creation", function( assert ) {
 	assert_vector(assert, vector, 15, 15);
 
 	// create from degrees
-	var vector = Vector.from_degree(45).mul_scalar_self(1000).round_self();
+	var vector = Vector.fromDegrees(45).mulScalarSelf(1000).roundSelf();
 	assert_vector(assert, vector, 707, 707);
 
 	// create from radian
-	var vector = Vector.from_radian(45*(Math.PI/180)).mul_scalar_self(1000).round_self();
+	var vector = Vector.fromRadians(45*(Math.PI/180)).mulScalarSelf(1000).roundSelf();
 	assert_vector(assert, vector, 707, 707);
 	
 	// create from string
-	var vector = Vector.from_string("42.3,10");
+	var vector = Vector.fromString("42.3,10");
+	assert_vector(assert, vector, 42.3, 10);
+
+	// create from array
+	var vector = Vector.fromArray([42.3, 10]);
 	assert_vector(assert, vector, 42.3, 10);
   
 });
@@ -119,8 +123,8 @@ QUnit.test( "exports", function( assert ) {
   
 	// check all basic exports
 	var vector = new Vector(1, 2);
-	assert.deepEqual(vector.to_list(), [1, 2]);
-	assert.deepEqual(vector.to_dict(), {x:1, y:2});
+	assert.deepEqual(vector.toArray(), [1, 2]);
+	assert.deepEqual(vector.toDict(), {x:1, y:2});
 	assert.equal(vector.toString(), "1,2");
 	assert.equal(vector.format("%x--%y"), "1--2");
 	assert.equal(vector.format("%x--%y -> %x"), "1--2 -> 1");
@@ -138,12 +142,12 @@ QUnit.test( "copy", function( assert ) {
 	
 	// test copy x
 	vector2.x = 19;
-	vector.copy_x(vector2);
+	vector.copyX(vector2);
 	assert_vector(assert, vector, 19, 11);
 	
 	// test copy y
 	vector2.y = 21;
-	vector.copy_y(vector2);
+	vector.copyY(vector2);
 	assert_vector(assert, vector, 19, 21);
 });
 
@@ -168,12 +172,12 @@ QUnit.test( "flip", function( assert ) {
   
 	// create a vector and try different flips
 	var vector = new Vector(5, 6);
-	var vector_flipped = vector.flip_xy();
+	var vector_flipped = vector.flipXY();
 	assert_vector(assert, vector, 5, 6);
 	assert_vector(assert, vector_flipped, 6, 5);
 	
 	// now flip self
-	vector.flip_xy_self();
+	vector.flipXYSelf();
 	assert_vector(assert, vector, 6, 5);
 });
 
@@ -187,11 +191,11 @@ QUnit.test( "invert", function( assert ) {
 	assert_vector(assert, vector_invert, -5, -6);
 	
 	// now invert self
-	vector.invert_self();
+	vector.invertSelf();
 	assert_vector(assert, vector, -5, -6);
 	
 	// invert self again
-	vector.invert_self();
+	vector.invertSelf();
 	assert_vector(assert, vector, 5, 6);
 });
 
@@ -218,144 +222,144 @@ QUnit.test( "operators", function( assert ) {
 	assert_vector(assert, vector, 5, 6);
 	
 	// test add scalar
-	assert_vector(assert, vector.add_scalar(4), 5+4, 6+4);
+	assert_vector(assert, vector.addScalar(4), 5+4, 6+4);
 	assert_vector(assert, vector, 5, 6);
 	
 	// test sub scalar
-	assert_vector(assert, vector.sub_scalar(4), 5-4, 6-4);
+	assert_vector(assert, vector.subScalar(4), 5-4, 6-4);
 	assert_vector(assert, vector, 5, 6);
 	
 	// test mul
-	assert_vector(assert, vector.mul_scalar(4), 5*4, 6*4);
+	assert_vector(assert, vector.mulScalar(4), 5*4, 6*4);
 	assert_vector(assert, vector, 5, 6);
 	
 	// test div
-	assert_vector(assert, vector.div_scalar(4), 5/4, 6/4);
+	assert_vector(assert, vector.divScalar(4), 5/4, 6/4);
 	assert_vector(assert, vector, 5, 6);
 });
 
 // test all operators with 'self' versions
-QUnit.test( "operators_self", function( assert ) {
+QUnit.test( "operatorsSelf", function( assert ) {
   
 	// create a testing vector
 	var vector = new Vector(5, 6);
 	vector_orig = vector.clone();
 
 	// test add
-	vector.add_self(new Vector(2, 3));
+	vector.addSelf(new Vector(2, 3));
 	assert_vector(assert, vector, 5+2, 6+3);
 	vector = vector_orig.clone();
 	
 	// test sub
-	vector.sub_self(new Vector(2, 3));
+	vector.subSelf(new Vector(2, 3));
 	assert_vector(assert, vector, 5-2, 6-3);
 	vector = vector_orig.clone();
 	
 	// test mul
-	vector.mul_self(new Vector(2, 3));
+	vector.mulSelf(new Vector(2, 3));
 	assert_vector(assert, vector, 5*2, 6*3);
 	vector = vector_orig.clone();
 	
 	// test div
-	vector.div_self(new Vector(2, 3));
+	vector.divSelf(new Vector(2, 3));
 	assert_vector(assert, vector, 5/2, 6/3);
 	vector = vector_orig.clone();
 	
 	// test add scalar
-	vector.add_scalar_self(4)
+	vector.addScalarSelf(4)
 	assert_vector(assert, vector, 5+4, 6+4);
 	vector = vector_orig.clone();
 	
 	// test sub scalar
-	vector.sub_scalar_self(4)
+	vector.subScalarSelf(4)
 	assert_vector(assert, vector, 5-4, 6-4);
 	vector = vector_orig.clone();
 	
 	// test mul
-	vector.mul_scalar_self(4)
+	vector.mulScalarSelf(4)
 	assert_vector(assert, vector, 5*4, 6*4);
 	vector = vector_orig.clone();
 	
 	// test div
-	vector.div_scalar_self(4)
+	vector.divScalarSelf(4)
 	assert_vector(assert, vector, 5/4, 6/4);
 	vector = vector_orig.clone();
 });
 
 
 // test converting to degrees
-QUnit.test( "to_degree", function( assert ) {
+QUnit.test( "toDegree", function( assert ) {
 
 	var vector = new Vector(5, 0);
-	var deg = vector.to_degree();
+	var deg = vector.toDegrees();
 	assert.equal(deg, 0);
 
 	var vector = new Vector(5, 5);
-	var deg = vector.to_degree();
+	var deg = vector.toDegrees();
 	assert.equal(deg, 45);
 
 	var vector = new Vector(0, 5);
-	var deg = vector.to_degree();
+	var deg = vector.toDegrees();
 	assert.equal(deg, 90);
 
 	var vector = new Vector(-5, 5);
-	var deg = vector.to_degree();
+	var deg = vector.toDegrees();
 	assert.equal(deg, 135);
 
 	var vector = new Vector(-5, 0);
-	var deg = vector.to_degree();
+	var deg = vector.toDegrees();
 	assert.equal(deg, 180);
 
 	var vector = new Vector(-5, -5);
-	var deg = vector.to_degree();
+	var deg = vector.toDegrees();
 	assert.equal(deg, 225);
 
 	var vector = new Vector(0, -5);
-	var deg = vector.to_degree();
+	var deg = vector.toDegrees();
 	assert.equal(deg, 270);
 
 	var vector = new Vector(5, -5);
-	var deg = vector.to_degree();
+	var deg = vector.toDegrees();
 	assert.equal(deg, 315);
 
 });
 
 
 // test converting to radian
-QUnit.test( "to_radian", function( assert ) {
+QUnit.test( "toRadian", function( assert ) {
 
 	var to_deg = (180 / Math.PI);
 
 	var vector = new Vector(5, 0);
-	var rad = vector.to_radian();
+	var rad = vector.toRadians();
 	assert.equal(rad * to_deg, 0);
 
 	var vector = new Vector(5, 5);
-	var rad = vector.to_radian();
+	var rad = vector.toRadians();
 	assert.equal(rad * to_deg, 45);
 
 	var vector = new Vector(0, 5);
-	var rad = vector.to_radian();
+	var rad = vector.toRadians();
 	assert.equal(rad * to_deg, 90);
 
 	var vector = new Vector(-5, 5);
-	var rad = vector.to_radian();
+	var rad = vector.toRadians();
 	assert.equal(rad * to_deg, 135);
 
 	var vector = new Vector(-5, 0);
-	var rad = vector.to_radian();
+	var rad = vector.toRadians();
 	assert.equal(rad * to_deg, 180);
 
 	var vector = new Vector(-5, -5);
-	var rad = vector.to_radian();
+	var rad = vector.toRadians();
 	assert.equal(rad * to_deg, 225);
 
 	var vector = new Vector(0, -5);
-	var rad = vector.to_radian();
+	var rad = vector.toRadians();
 	assert.equal(rad * to_deg, 270);
 
 	var vector = new Vector(5, -5);
-	var rad = vector.to_radian();
+	var rad = vector.toRadians();
 	assert.equal(rad * to_deg, 315);
 
 });
@@ -368,9 +372,9 @@ QUnit.test( "radian_to", function( assert ) {
 
 	var v1 = new Vector(5, 5);
 	var v2 = new Vector(10, 10);
-	var rad = v1.radian_to(v2);
+	var rad = v1.radiansTo(v2);
 	assert.equal(rad * to_deg, 45);
-	var rad = v2.radian_to(v1);
+	var rad = v2.radiansTo(v1);
 	assert.equal(rad * to_deg, 225);
 
 });
@@ -381,9 +385,9 @@ QUnit.test( "degree_to", function( assert ) {
 
 	var v1 = new Vector(5, 5);
 	var v2 = new Vector(10, 10);
-	var deg = v1.degree_to(v2);
+	var deg = v1.degreesTo(v2);
 	assert.equal(deg, 45);
-	var deg = v2.degree_to(v1);
+	var deg = v2.degreesTo(v1);
 	assert.equal(deg, 225);
 
 });
@@ -395,7 +399,7 @@ QUnit.test( "distance_and_length", function( assert ) {
 	// calc distance
 	var v1 = new Vector(-7, -4);
 	var v2 = new Vector(17, 6);
-	assert.equal(v1.distance_from(v2), 26);
+	assert.equal(v1.distanceFrom(v2), 26);
 
 	// calc length (magnitude is just an alias)
 	var v1 = new Vector(12, 16);
@@ -403,6 +407,23 @@ QUnit.test( "distance_and_length", function( assert ) {
 	assert.equal(v1.magnitude(), 20);
 });
 
+// test equals
+QUnit.test( "equals", function( assert ) {
+
+    // not equal
+	var v1 = new Vector(-7, -4);
+	var v2 = new Vector(17, 6);
+	assert.equal(v1.equals(v2), false);
+
+	// equal
+	var v1 = new Vector(17, 6);
+	var v2 = new Vector(17, 6);
+	assert.equal(v1.equals(v2), true);
+
+	// wrong types
+	assert.equal(v1.equals(5), false);
+	assert.equal(v1.equals([17, 6]), false);
+});
 
 // test radian between two vectors
 QUnit.test( "normalize", function( assert ) {
@@ -418,7 +439,7 @@ QUnit.test( "normalize", function( assert ) {
 
 	// test normalize-self
 	var vector = new Vector(10, -10);
-	vector.normalize_self();
+	vector.normalizeSelf();
 	assert_vector(assert, vector, 1/Math.sqrt(2), -1/Math.sqrt(2));
 
 });
@@ -427,18 +448,18 @@ QUnit.test( "normalize", function( assert ) {
 // test round and abs functions
 QUnit.test( "round_abs_apply", function( assert ) {
 
-	// test round and round_self
+	// test round and roundSelf
 	var vector = new Vector(1.45, 1.45);
 	assert_vector(assert, vector.round(), 1, 1);
 	assert_vector(assert, vector, 1.45, 1.45);
-	vector.round_self();
+	vector.roundSelf();
 	assert_vector(assert, vector, 1, 1);
 
-	// test abs and abs_self
+	// test abs and absSelf
 	var vector = new Vector(-1.45, -1.45);
 	assert_vector(assert, vector.abs(), 1.45, 1.45);
 	assert_vector(assert, vector, -1.45, -1.45);
-	vector.abs_self();
+	vector.absSelf();
 	assert_vector(assert, vector, 1.45, 1.45);
 
 	// test apply
@@ -510,17 +531,17 @@ QUnit.test( "rotation", function( assert ) {
 
 	// test rotate by degrees
 	var vector = new Vector(2, 0);
-	vector.rotate_degrees_self(90);
+	vector.rotateDegreesSelf(90);
 	assert_vector(assert, vector, 0, 2);
-	assert_vector(assert, vector.rotate_degrees(90), -2, 0);
-	assert_vector(assert, vector.rotate_degrees(45), -1.41421356, 1.41421356);
+	assert_vector(assert, vector.rotateDegrees(90), -2, 0);
+	assert_vector(assert, vector.rotateDegrees(45), -1.41421356, 1.41421356);
 
 	// test rotate by radians
 	var vector = new Vector(2, 0);
-	vector.rotate_radians_self(90*to_rad);
+	vector.rotateRadiansSelf(90*to_rad);
 	assert_vector(assert, vector, 0, 2);
-	assert_vector(assert, vector.rotate_radians(90*to_rad), -2, 0);
-	assert_vector(assert, vector.rotate_radians(45*to_rad), -1.41421356, 1.41421356);
+	assert_vector(assert, vector.rotateRadians(90*to_rad), -2, 0);
+	assert_vector(assert, vector.rotateRadians(45*to_rad), -1.41421356, 1.41421356);
 });
 
 // print coverage percent
