@@ -36,11 +36,20 @@ var Vector = require('vector2js');
 var vec = new Vector(10, 10);
 ```
 
-If you include the JavaScript from /dist/ directly into your web pages, you will have 'Vector' in global scope and you can create new vectors with:
+If you include the JavaScript from /dist/ directly into your web pages, you will have 'Vector' in global scope and you can create new vectors like this:
 
 ```javascript
 // create a new vector
 var vec = new Vector(10, 10);
+```
+
+### Basic usage example:
+
+```javascript
+	var v1 = new Vector(5, 10);
+	var v2 = new Vector(1, 1);
+	console.log(v1.add(v2).length())
+	> 12.529964086141668
 ```
 
 ## Tests & Browser support
