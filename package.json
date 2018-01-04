@@ -1,6 +1,6 @@
 {
   "name": "vector2js",
-  "version": "1.0.2",
+  "version": "2.0.1",
   "description": "Simple 2D vectors for JavaScript.",
   "main": "dist/vector2js.js",
   "scripts": {
@@ -13,9 +13,9 @@
   "keywords": [
 	"vectors",
 	"2d vectors",
-    "2d",
-    "math",
-    "physics",
+  "2d",
+  "math",
+  "physics",
 	"game"
   ],
   "author": "Ronen Ness",

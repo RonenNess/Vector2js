@@ -1,6 +1,6 @@
 {
   "name": "vector2js",
-  "version": "1.0.2",
+  "version": "2.0.1",
   "homepage": "https://ronenness.github.io/Vector2js/",
   "authors": [
     "Ronen Ness <ronenness@gmail.com>"
@@ -9,9 +9,9 @@
   "keywords": [
 	"vectors",
 	"2d vectors",
-    "2d",
-    "math",
-    "physics",
+  "2d",
+  "math",
+  "physics",
 	"game"
   ],
   "license": "MIT",
